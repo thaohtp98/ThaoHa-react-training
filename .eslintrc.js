@@ -2,6 +2,7 @@ module.exports = {
   root: true,
   parserOptions: {
     parser: 'babel-eslint',
+    ecmaVersion: 8,
     sourceType: 'module'
   },
   env: {
@@ -9,7 +10,6 @@ module.exports = {
     node: true,
     es6: true,
   },
-  extends: ['eslint:recommended'],
   plugins: [
     "react"
   ],

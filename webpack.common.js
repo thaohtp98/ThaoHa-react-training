@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpacklugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin');
 var webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: [
@@ -9,7 +10,7 @@ module.exports = {
     'webpack-dev-server/client?http://localhost:3000/'
   ],
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, './build'),
     filename: 'bundle.js'
   },
   module: {
@@ -43,7 +44,11 @@ module.exports = {
       fix: true,
       overrideConfigFile: path.resolve(__dirname, '.eslintrc.js')
     }),
-    new webpack.HotModuleReplacementPlugin({multistep: true})
+    new webpack.HotModuleReplacementPlugin({multistep: true}),
+    new Dotenv({
+      path: './.env',
+      safe: true,
+    }),
   ],
   resolve: {
     alias: {
@@ -60,6 +65,16 @@ module.exports = {
     historyApiFallback: true,
     watchContentBase: true,
     quiet: true,
+    proxy: {
+      '/api': {
+        target: 'http://myapp.stagging.cf/api/',
+        secure: false,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    },
     watchOptions: {
       poll: true,
       aggregateTimeout: 300,
