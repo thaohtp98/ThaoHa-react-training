@@ -1,15 +1,15 @@
 import axios from 'axios'
 
-const getUrlPrefix = () => '/api';
+const getUrlPrefix = () => '/api'
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_KEY
-});
+})
 // instance.defaults.headers.common['Authorization'] = 'Bearer ';
 
 const get = async(url, params = {}) => {
   try {
-    const config = {params: params}
+    const config = { params: params }
     const response = await instance.get(getUrlPrefix() + url, config)
     return _responseHandler(response)
   } catch (error) {
@@ -61,7 +61,7 @@ const _responseHandler = (response, url) => {
 
 const _errorHandler = (err) => {
   if (err.response && err.response.status === 401) {
-    //todo
+    // todo
   }
   throw err
 }

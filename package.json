@@ -28,7 +28,7 @@
   },
   "scripts": {
     "lint": "eslint --fix --ext .jsx,.js src",
-    "dev": "NODE_OPTIONS='--max-http-header-size=100000' webpack serve --config ./webpack.dev.js",
+    "dev": "webpack serve --config ./webpack.dev.js",
     "help": "webpack --help"
   },
   "husky": {
