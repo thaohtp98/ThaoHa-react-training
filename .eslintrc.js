@@ -1,26 +1,26 @@
 module.exports = {
   root: true,
+  parser: 'babel-eslint',
   parserOptions: {
-    parser: 'babel-eslint',
     ecmaVersion: 8,
     sourceType: 'module'
   },
   env: {
     browser: true,
     node: true,
-    es6: true,
+    es6: true
   },
   plugins: [
-    "react"
+    'react'
   ],
-  extends: ["eslint:recommended", "plugin:react/recommended"],
+  extends: ['eslint:recommended', 'plugin:react/recommended'],
   // add your custom rules here
   rules: {
-    "react/react-in-jsx-scope": "off",
-    "react/jsx-no-bind": [0, {
-      "ignoreRefs": false,
-      "allowArrowFunctions": false,
-      "allowBind": true
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-no-bind': [0, {
+      'ignoreRefs': false,
+      'allowArrowFunctions': false,
+      'allowBind': true
     }],
     'block-spacing': [2, 'always'],
     'brace-style': [2, '1tbs', {
@@ -189,12 +189,12 @@ module.exports = {
   },
   settings: {
     react: {
-        "version": "latest",
+      'version': 'latest'
     },
     'import/resolver': {
       node: {
-        paths: ['src'],
-      },
-    },
-  },
+        paths: ['src']
+      }
+    }
+  }
 }
