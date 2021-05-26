@@ -38,7 +38,7 @@ const put = async(url, data = {}) => {
 
 const post = async(url, data = {}) => {
   try {
-    const response = await instance.post(this.getUrlPrefix() + url, data)
+    const response = await instance.post(getUrlPrefix() + url, data)
     return _responseHandler(response)
   } catch (error) {
     _errorHandler(error)
@@ -47,7 +47,7 @@ const post = async(url, data = {}) => {
 
 const del = async(url, data = {}) => {
   try {
-    const response = await instance.delete(this.getUrlPrefix() + url, { data })
+    const response = await instance.delete(getUrlPrefix() + url, { data })
     return _responseHandler(response)
   } catch (error) {
     _errorHandler(error)

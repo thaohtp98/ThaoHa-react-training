@@ -8,7 +8,7 @@ const App = () => {
       <header className='App-header'>
         <img src={logo} className='App-logo' alt='logo' />
         <p>
-          Edit <code>src/layouts/App.js</code> and save to reload.
+          You are loggin
         </p>
       </header>
     </div>
