@@ -1,8 +1,8 @@
 const path = require('path')
 const HtmlWebpacklugin = require('html-webpack-plugin')
-const ESLintPlugin = require('eslint-webpack-plugin');
-var webpack = require('webpack');
-const Dotenv = require('dotenv-webpack');
+const ESLintPlugin = require('eslint-webpack-plugin')
+var webpack = require('webpack')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   entry: [
@@ -25,10 +25,10 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i, 
+        test: /\.(jpe?g|png|gif|svg)$/i,
         loader: 'file-loader',
         options: {
           name: 'public/icons/[name].[ext]'
@@ -44,16 +44,16 @@ module.exports = {
       fix: true,
       overrideConfigFile: path.resolve(__dirname, '.eslintrc.js')
     }),
-    new webpack.HotModuleReplacementPlugin({multistep: true}),
+    new webpack.HotModuleReplacementPlugin({ multistep: true }),
     new Dotenv({
       path: './.env',
-      safe: true,
-    }),
+      safe: true
+    })
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src/'),
-    },
+      '@': path.resolve(__dirname, 'src/')
+    }
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'build'),
@@ -67,7 +67,7 @@ module.exports = {
     quiet: true,
     proxy: {
       '/api': {
-        target: 'http://myapp.stagging.cf/api/',
+        target: 'http://falcon.stagging.cf/api/',
         secure: false,
         changeOrigin: true,
         pathRewrite: {
@@ -78,10 +78,9 @@ module.exports = {
     watchOptions: {
       poll: true,
       aggregateTimeout: 300,
-      poll: 1000,
       ignored: [
         path.resolve(__dirname, 'node_modules')
-      ],
+      ]
     }
   },
   devtool: 'inline-source-map'
