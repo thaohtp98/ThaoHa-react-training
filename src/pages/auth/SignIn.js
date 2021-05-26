@@ -1,54 +1,60 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import '@/access/signin.css'
+import { post } from '@/api/BaseRequest'
+import { useHistory } from 'react-router-dom'
+import { setStorageItem } from '@/helper'
 
-class SignIn extends Component {
-  constructor() {
-    super()
-    this.state = {
-      username: '',
-      password: ''
+const SignIn = () => {
+  const [inputs, setInputs] = useState({
+    username: '',
+    password: ''
+  })
+
+  const { username, password } = inputs
+
+  function handleChange(e) {
+    const { name, value } = e.target
+    setInputs(inputs => ({ ...inputs, [name]: value }))
+  }
+
+  const history = useHistory()
+
+  const handleSignIn = async(e) => {
+    e.preventDefault()
+    const url = '/oauth/token'
+    const data = {
+      'grant_type': 'password',
+      'client_id': '1',
+      'client_secret': 'nFzLk7YjUzI2Qorhb43etp7ZSZYMdJ1PiJJUtWbN',
+      'scope': '*',
+      'username': inputs.username,
+      'password': inputs.password
     }
-  }
+    const response = await post(url, data)
+    console.log(response)
 
-  handleUserName(text) {
-    this.setState({ username: text.target.value })
-  }
-
-  handlePassword(text) {
-    this.setState({ password: text.target.value })
-  }
-
-  handleSignIn() {
-    const api = 'http://127.0.0.1:3000/signin'
-    const data = {}
-    data.username = this.state.username
-    data.password = this.state.password
-    const options = {
-      header: {
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify({ data })
+    if (response && response.access_token) {
+      setStorageItem('token', response.access_token)
+      setStorageItem('user_info', JSON.stringify(response.user))
+      history.push('/')
     }
-    fetch(api, options).then(function(response) {
-      response.json()
-    })
+
+    console.log('Access token: ', response.access_token)
+    return response.access_token
   }
 
-  render() {
-    return (
-      <div className='login-page'>
-        <div className='form'>
-          <form className='login-form'>
-            <input type='text' placeholder='username' onChange={(text) => { this.handleUserName(text) }} />
-            <input type='password' placeholder='password' onChange={(text) => { this.handlePassword(text) }} />
-            <button onClick={ () => { this.handleSignIn() } }>login</button>
-            <p className='message'>Not registered? <a href='#'>Create an account</a></p>
-          </form>
-        </div>
+  return (
+    <div className='login-page'>
+      <div className='form'>
+        <form className='login-form' role='form' onSubmit={handleSignIn}>
+          <input type='text' placeholder='username' name='username' onChange={handleChange} value={username} />
+          <input type='password' placeholder='password' name='password' onChange={handleChange} value={password} />
+          <input className='btn-login' type='submit' value='LOGIN'/>
+          <p className='message'>Not registered? <a href='#'>Create an account</a></p>
+        </form>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default SignIn
