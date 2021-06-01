@@ -1,11 +1,11 @@
 .login-page {
   width: 100%;
   height: 100vh;
-  background: #76b852; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-  background: -moz-linear-gradient(right, #76b852, #8DC26F);
-  background: -o-linear-gradient(right, #76b852, #8DC26F);
-  background: linear-gradient(to left, #76b852, #8DC26F);
+  background: #282c34; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #282c34, #282c34);
+  background: -moz-linear-gradient(right, #282c34, #282c34);
+  background: -o-linear-gradient(right, #282c34, #282c34);
+  background: linear-gradient(to left, #282c34, #282c34);
   padding: 8% 0 0;
   margin: auto;
 }

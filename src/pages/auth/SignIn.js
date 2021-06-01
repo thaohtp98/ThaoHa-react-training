@@ -3,6 +3,8 @@ import '@/access/signin.css'
 import { post } from '@/api/BaseRequest'
 import { useHistory } from 'react-router-dom'
 import { setStorageItem } from '@/helper'
+import Menu from '@/pages/menu/Menu'
+import Footer from '@/pages/footer/Footer'
 
 const SignIn = () => {
   const [inputs, setInputs] = useState({
@@ -35,8 +37,9 @@ const SignIn = () => {
 
     if (response && response.access_token) {
       setStorageItem('token', response.access_token)
+      setStorageItem('refreshToken', response.refresh_token)
       setStorageItem('user_info', JSON.stringify(response.user))
-      history.push('/')
+      history.push('/home')
     }
 
     console.log('Access token: ', response.access_token)
@@ -44,15 +47,19 @@ const SignIn = () => {
   }
 
   return (
-    <div className='login-page'>
-      <div className='form'>
-        <form className='login-form' role='form' onSubmit={handleSignIn}>
-          <input type='text' placeholder='username' name='username' onChange={handleChange} value={username} />
-          <input type='password' placeholder='password' name='password' onChange={handleChange} value={password} />
-          <input className='btn-login' type='submit' value='LOGIN'/>
-          <p className='message'>Not registered? <a href='#'>Create an account</a></p>
-        </form>
+    <div>
+      <Menu />
+      <div className='login-page'>
+        <div className='form'>
+          <form className='login-form' role='form' onSubmit={handleSignIn}>
+            <input type='text' placeholder='username' name='username' onChange={handleChange} value={username} />
+            <input type='password' placeholder='password' name='password' onChange={handleChange} value={password} />
+            <input className='btn-login' type='submit' value='LOGIN'/>
+            <p className='message'>Not registered? <a href='#'>Create an account</a></p>
+          </form>
+        </div>
       </div>
+      <Footer />
     </div>
   )
 }

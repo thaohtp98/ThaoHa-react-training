@@ -17,6 +17,7 @@ module.exports = {
   // add your custom rules here
   rules: {
     'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
     'react/jsx-no-bind': [0, {
       'ignoreRefs': false,
       'allowArrowFunctions': false,
