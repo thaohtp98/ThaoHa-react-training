@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { get } from '@/api/BaseRequest'
+import RemoveTask from '@/pages/task/RemoveTask'
 
 const ListTask = () => {
   const listTask = async() => {
@@ -37,9 +38,9 @@ const ListTask = () => {
                   <td> { task.status } </td>
                   <td> { task.created_at } </td>
                   <td> { task.updated_at } </td>
-                  <td>
+                  <td className='d-flex justify-content-center'>
                     <button className='btn btn-warning mx-1'>Edit</button>
-                    <button className='btn btn-danger mx-1'>Remove</button>
+                    <RemoveTask taskId={task.id} taskTitle={task.title}></RemoveTask>
                   </td>
                 </tr>
               )
