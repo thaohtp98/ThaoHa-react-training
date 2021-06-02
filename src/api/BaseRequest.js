@@ -1,11 +1,12 @@
 import axios from 'axios'
+import { getStorageItem } from '@/helper'
 
 const getUrlPrefix = () => '/api'
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_KEY
 })
-// instance.defaults.headers.common['Authorization'] = 'Bearer ';
+instance.defaults.headers.common['Authorization'] = `Bearer ${getStorageItem('token')}`
 
 const get = async(url, params = {}) => {
   try {

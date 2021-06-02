@@ -22,7 +22,7 @@ const Menu = () => {
     <div>
       {/* Navigation*/}
       <nav className='navbar navbar-expand-lg navbar-dark navbar-custom fixed-top'>
-        <div className='container px-5'>
+        <div className='container'>
           <Link to='/' className='navbar-brand'>
             Start React
           </Link>
