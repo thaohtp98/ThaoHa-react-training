@@ -39,6 +39,7 @@ const SignIn = () => {
       setStorageItem('token', response.access_token)
       setStorageItem('refreshToken', response.refresh_token)
       setStorageItem('user_info', JSON.stringify(response.user))
+      setStorageItem('user_id', JSON.stringify(response.user.id))
       history.push('/home')
     }
 

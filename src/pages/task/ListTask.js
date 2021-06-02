@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { get } from '@/api/BaseRequest'
 import RemoveTask from '@/pages/task/RemoveTask'
+import AddTask from '@/pages/task/AddTask'
 
 const ListTask = () => {
   const listTask = async() => {
@@ -18,6 +19,7 @@ const ListTask = () => {
   return (
     <div className='py-5'>
       <div className='container'>
+        <AddTask></AddTask>
         <div className='table-responsive-md'>
           <table className='table table-striped table-hover text-center'>
             <thead>
