@@ -8,6 +8,7 @@ const RemoveTask = (props) => {
   const toggle = () => setModal(!modal)
 
   const handleRemoveTask = async() => {
+    setModal(!modal)
     const urlTask = `/task/${props.taskId}`
     const responseRemove = await del(urlTask)
     console.log(responseRemove)
