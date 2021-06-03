@@ -46,11 +46,11 @@ const AddTask = (props) => {
           <ModalBody>
             <FormGroup className='my-2'>
               <Label for='title'>Title</Label>
-              <Input type='text' name='title' id='title' placeholder='Input title' onChange={handleChange} value={title}/>
+              <Input type='text' name='title' id='title' placeholder='Input title' onChange={handleChange} value={title} />
             </FormGroup>
             <FormGroup className='my-2'>
               <Label for='status'>Status</Label>
-              <Input type='text' name='status' id='status' placeholder='Input status' onChange={handleChange} value={status}/>
+              <Input type='text' name='status' id='status' placeholder='Input status' onChange={handleChange} value={status} />
             </FormGroup>
           </ModalBody>
           <ModalFooter>

@@ -16,7 +16,7 @@ const RemoveTask = (props) => {
   }
 
   return (
-    <div>
+    <div className='mx-1'>
       <Button color='danger' onClick={toggle}>Remove</Button>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Remove</ModalHeader>
